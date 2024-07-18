@@ -1,32 +1,37 @@
 import './MemberList.css';
-import './MemberList2.css';
+// import './MemberList2.css';
 
 import { useState } from 'react';
+
 export function MemberList(){
   const [users, setUsers] = useState(
     [
-      {id:1, name:'홍길동', age:34, job:'무직'},
-      {id:2, name:'이순신', age:54, job:'군인'},
-      {id:3, name:'세종대왕', age:44, job:'정치인'},
     ]
   );
-  // 텍스트값용 변수
+
+  // 텍스트값용 변수    
   const [name, setName] = useState('');
   const changeName = (e)=>{setName(e.target.value);}
+
   const [age, setAge] = useState('');
   const changeAge = (e)=>{setAge(e.target.value);}
+
   const [job, setJob] = useState('');
   const changeJob = (e)=>{setJob(e.target.value);}
+
   const addUser = (e) => {
     e.preventDefault();
+
     // 새로운 ID 생성
     const newId = users.length > 0 ? Math.max(...users.map(user => user.id)) + 1 : 1;
+    
     const newUser = {id:newId, name:name ,age:Number(age), job:job};
     setUsers([...users, newUser]);
     setName('');
     setAge('');
     setJob('');
   }
+
   const deleteUser = (_id) =>{
     const updateUsers = users.filter(user=>user.id !==_id);
     setUsers(updateUsers);
@@ -57,15 +62,18 @@ export function MemberList(){
       </table>
     </form>
   </div>
+
   <div class="list-container">
     <ul id="userList">
       {
         users.map(
           (user)=>(
             <li key={user.id}>{user.id}. {user.name}({user.age}세){user.job} <button className="delBtn" onClick={()=>deleteUser(user.id)}>삭제</button></li>
+
           )
         )
       }
+      
     </ul>
   </div>
   </>
