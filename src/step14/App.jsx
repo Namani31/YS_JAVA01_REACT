@@ -1,8 +1,8 @@
-import {ScoreComp} from './ScoreComp'; 
+import Toolbar from './Toolbar'; 
 export function App(){
   return (
     <>
-    <ScoreComp/>
+    <Toolbar/>
     </>
   );
 }
