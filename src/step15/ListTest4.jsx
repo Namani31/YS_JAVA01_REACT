@@ -4,23 +4,20 @@ const students = [
     { id: 3, name: '이순신', job: '군인' },
 ]
 
-/* 
-    출력 
-    1. 홍길동(백수)
-    2. 강감찬(공무원)
-    3. 이순신(군인)
-*/
-
 export function ListTest4() {
     return (
         <>
-        <ul>
-            {students.map(
-                (students, id, name, job) => {
-                    return <li key={students.id}> {students.id}. {students.name}({students.job})</li>
+            <ul>
+                {
+                    students.map(
+                        (stu) => {
+                            return (
+                                <li key={stu.id}>{stu.id}. {stu.name}({stu.job})</li>
+                            );
+                        }
+                    )
                 }
-            )}
-        </ul>
+            </ul>
         </>
     );
 }
